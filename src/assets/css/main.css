@@ -1281,6 +1281,11 @@ h4 {
     width: 100%;
   }
 }
+
+.status {
+  text-align: center;
+}
+
 @media (max-width: 1199px) {
   .fixed-gift {
     display: none;
