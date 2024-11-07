@@ -5,7 +5,7 @@ const webpack = require("webpack-stream");
 const browsersync = require("browser-sync");
 
 const dist = "C:/MAMP/htdocs/public";
-// const dist = "./dist"; 
+// const dist = "./dist";  
 
 
 
