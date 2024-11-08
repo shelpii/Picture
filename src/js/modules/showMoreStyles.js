@@ -1,26 +1,28 @@
 import { getResource } from "../services/requests";
 
 const showMoreStyles = (trigger, wrapper) => {
-        const btn = document.querySelector(trigger);
+    const btn = document.querySelector(trigger);
         
-        
-    // cards.forEach(card => {
-    //     card.classList.add('animated', 'fadeInUp');
-    // });
 
-    // btn.addEventListener('click', () => {
-    //     cards.forEach(card => {
-    //         card.classList.remove('hidden-lg', 'hidden-md', 'hidden-sm', 'hidden-xs');
-    //         card.classList.add('col-sm-3', 'col-sm-offset-0', 'col-xs-10', 'col-xs-offset-1');
-
-    //     });
-    //     btn.remove();
-    // })
-
+    
     btn.addEventListener('click', function() {
         getResource('assets/db.json')
             .then(res => createArts(res.styles))
-            .catch(error => console.log(error));
+            .catch(err => {
+                let statusMessage = document.createElement('div');
+                statusMessage.classList.add('status');
+                statusMessage.style.paddingBottom = '30px'
+                document.querySelector(wrapper).appendChild(statusMessage);
+
+                let imgErr = document.createElement('img');
+                imgErr.setAttribute('src', 'assets/img/fail.png');
+                imgErr.classList.add('animated', 'fadeInLeft');
+                statusMessage.appendChild(imgErr);
+
+                let textErr = document.createElement('div');
+                textErr.textContent = 'Ошибка:(  Попробуйте ещё раз';
+                statusMessage.appendChild(textErr);
+            });
 
         this.remove();
     })
